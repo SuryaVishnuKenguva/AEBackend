@@ -32,7 +32,7 @@ const login = (req, res) => {
 
             bcrypt.compare(password, user.password, (err, result) => {
                 if (result) {
-                    const token = jwt.sign({ email: user.email,name:user.firstname+" "+user.lastname, role: user.role }, "surya@9182");
+                    const token = jwt.sign({ email: user.email, name:user.firstname+" "+user.lastname, firstname:user.firstname, lastname:user.lastname, mobile:user.mobileno, role: user.role }, "surya@9182");
                     res.cookie('token', token);
                     return res.json({ message: "Login successful"});
                 } else {
